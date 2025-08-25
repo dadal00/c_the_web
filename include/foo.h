@@ -1,6 +1,3 @@
-#ifndef FOO_H
-#define FOO_H
+#pragma once
 
 void print_foo();
-
-#endif
