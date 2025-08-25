@@ -2,6 +2,9 @@
 
 c_the_web
 
+server.log
+server.pid
+
 # Prerequisites
 *.d
 
