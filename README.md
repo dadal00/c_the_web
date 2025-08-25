@@ -1,23 +1,22 @@
 # C The Web
 
-make format
+FIRST
 
+set -a
+source .env
+set +a
+
+THEN
+
+make format
 make
 
 THEN
 
-./c_the_web
-
-http://127.0.0.1:8080/
-
-OR
-
 chmod +x ./server.sh
-
 ./server.sh start
-
-./server.sh stop
 
 FINALLY
 
+./server.sh stop
 make clean
