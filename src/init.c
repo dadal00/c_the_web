@@ -51,6 +51,14 @@ int init(const int port, const int max_connections) {
   // Convert port from HOST to NETWORK byte order using htons
   address.sin_port = htons(port);
 
+  // Allows our server to reuse the same port.
+  int opt = 1;
+  if (setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) ==
+      -1) {
+    perror("setsockopt failed");
+    exit(EXIT_FAILURE);
+  }
+
   // Tell the OS to send data from our SERVER address to our SOCKET file
   // descriptor If error, exit
   if (bind(server_socket, (struct sockaddr *)&address, sizeof(address)) == -1) {

@@ -43,5 +43,8 @@ ServerConfig load_env(void) {
 
   int port = verify_positive_int(getenv_or_default("PORT", "8080"), CHECK_PORT);
 
-  return (ServerConfig){port, max_connections};
+  int num_threads = verify_positive_int(getenv_or_default("NUM_THREADS", "3"),
+                                        DONT_CHECK_PORT);
+
+  return (ServerConfig){port, max_connections, num_threads};
 }

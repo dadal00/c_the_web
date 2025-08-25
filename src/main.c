@@ -6,11 +6,13 @@
 #include <stdio.h>
 // Standard library for EXIT_SUCESS
 #include <stdlib.h>
+// POSIX libary for close
+#include <unistd.h>
 
 // Custom
 #include <config.h>
 #include <init.h>
-#include <listen.h>
+#include <listeners.h>
 #include <signals.h>
 
 int main() {
@@ -26,7 +28,7 @@ int main() {
   printf("Server listening on http://127.0.0.1:%d/ ...\n", config.port);
   fflush(stdout);
 
-  start_listener(server_socket);
+  start_listeners(server_socket, config.num_threads);
 
   return EXIT_SUCCESS;
 }

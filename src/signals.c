@@ -16,6 +16,7 @@
 
 #include <signals.h>
 
+volatile sig_atomic_t running = 1;
 static int internal_server_socket = -1;
 
 static void handle_shutdown(const int sig) {
@@ -23,6 +24,8 @@ static void handle_shutdown(const int sig) {
   (void)sig;
 
   printf("\nShutting down server...\n");
+
+  running = 0;
 
   if (internal_server_socket >= 0)
     close(internal_server_socket);
