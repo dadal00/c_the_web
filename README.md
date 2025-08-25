@@ -1,5 +1,7 @@
 # C The Web
 
+make format
+
 make
 
 THEN
